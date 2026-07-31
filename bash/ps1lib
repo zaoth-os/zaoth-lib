@@ -19,13 +19,38 @@ ps1_git_info() {
     echo -e ":󰊢  $(ansi_esc "  ${branch} ${status}" -r1)"
 }
 
+tilda() {
+
+    # to fix the proble with (\w) and scape
+    # use this and create the path manually
+    local state=0
+    local parts=()
+    local part
+
+    # split the path into (var home  user ...)
+    # and build as after user name -> /var/home/user/ -> ~/
+    for part in ${PWD//\// }; do
+        if [[ $state -eq 1 ]]; then
+            parts+=("$part")
+        elif [[ $state -eq 0 && $part == "$USER" ]]; then
+            state=1
+            parts+=("~")
+        fi
+    done
+
+    local IFS="/"
+    echo "${parts[*]}"
+}
+
 
 build_ps1() {
-    local msg="\n   $(ansi_esc "$PWD" -c1)"
+    local msg="\n   $(ansi_esc "$(tilda)" -c1)"
+
     if [ -n "$VIRTUAL_ENV" ]; then
         local venv_name="${VIRTUAL_ENV_PROMPT:-NONE}"
         msg+=" $(ansi_esc " (${venv_name// /})" -g1)"
     fi
+
     is_git_repo && msg+="$(ps1_git_info)"
     PS1="${msg}\n   "
 }
