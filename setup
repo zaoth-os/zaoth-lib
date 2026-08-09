@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+_TO="/usr/lib/bash/"
+_FROM="src/bash/"
+
+install-src() {
+	mkdir -p $_TO
+	sudo cp -r $_FROM $_TO
+}
+
