@@ -1,10 +1,7 @@
 #!/usr/bin/env sh
 
+_LOCAL="$(dirname "${BASH_SOURCE[0]}")"
 _TO="/usr/lib/bash/"
-_FROM="src/bash/"
+_FROM="$_LOCAL/src/bash/"
 
-install-src() {
-	mkdir -p $_TO
-	sudo cp -r $_FROM $_TO
-}
 
