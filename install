@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cp -r ./bash /usr/lib/
+cp -r $(dirname "${BASH_SOURCE[0]}")/bash /usr/lib/
