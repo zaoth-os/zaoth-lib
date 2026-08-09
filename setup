@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
+from_src="$(dirname $(realpath "${BASH_SOURCE[0]}"))/src/bash"
+to_src="/usr/lib/bash/"
 
-_LOCAL="$(dirname $(realpath "${BASH_SOURCE[0]}"))"
-_TO="/usr/lib/bash/"
-_FROM="$_LOCAL/src/bash/"
 
 
