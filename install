@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-sudo cp -r bash ./files/system/usr/lib/
-
+cp -r ./bash /usr/lib/
